@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import med.voll.api.endereco.Endereco;
 
-import java.util.UUID;
-
 @Table(name = "medicos")
 @Entity(name = "Medicos")
 @Getter
@@ -27,6 +25,8 @@ public class Medico {
     @Embedded
     private Endereco endereco;
 
+    private Boolean ativo;
+
 
     public Medico(DadosCadastroMedico dados) {
         this.nome = dados.nome();
@@ -35,6 +35,7 @@ public class Medico {
         this.crm = dados.crm();
         this.especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
+        this.ativo = true;
     }
 
     public void atualizarInformacoes(DadosAtualizacaoMedico dados){
@@ -51,4 +52,7 @@ public class Medico {
 
     }
 
+    public void excluir() {
+        this.ativo = false;
+    }
 }

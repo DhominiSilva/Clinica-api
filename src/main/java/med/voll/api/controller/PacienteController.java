@@ -34,4 +34,9 @@ public class PacienteController {
         paciente.atualizarInformacoes(dados);
     }
 
+    @DeleteMapping
+    public void excluir(){
+
+    }
+
 }
