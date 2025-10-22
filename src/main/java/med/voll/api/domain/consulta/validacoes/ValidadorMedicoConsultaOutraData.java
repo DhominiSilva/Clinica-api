@@ -1,5 +1,6 @@
 package med.voll.api.domain.consulta.validacoes;
 
+import med.voll.api.domain.ValidacaoException;
 import med.voll.api.domain.consulta.ConsultaRepository;
 import med.voll.api.domain.consulta.DadosAgendamentoConsulta;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class ValidadorMedicoConsultaOutraData implements ValidadosAgendamentoDeC
 
         var medicoPossuiOutraConsultaNoMesmoHorario = consultaRepository.existsByMedicoIdAndData(dados.idMedico(), dados.data());
         if(medicoPossuiOutraConsultaNoMesmoHorario){
-            throw new RuntimeException("Médico já possui consulta agendada nesse mesmo horário!");
+            throw new ValidacaoException("Médico já possui consulta agendada nesse mesmo horário!");
         }
 
     }
