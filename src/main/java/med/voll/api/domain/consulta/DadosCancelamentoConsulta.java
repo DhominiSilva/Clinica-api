@@ -7,7 +7,7 @@ public record DadosCancelamentoConsulta (
         @NotNull
         Long idConsulta,
 
-        @NotNull
+        @NotNull(message = "Motivo do cancelamento é obrigatório")
         MotivoCancelamento motivo
 ){
 }
